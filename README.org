@@ -1,0 +1,57 @@
+#+TITLE: on-demand-scroll-bar.el - Show scroll bars on demand
+#+AUTHOR: Florian Rommel
+#+LANGUAGE: en
+
+Show scroll bars only when needed.
+
+Enable ~on-demand-scroll-bar-mode~ to show the native graphical
+scroll bars when the buffer is not fully visible.
+
+This is experimental and hacky.  Expect breaking changes.
+
+
+* Installation
+
+Put the location of ~on-demand-scroll-bar.el~ in your load path and
+require it in your init file:
+#+BEGIN_SRC emacs-lisp
+(require 'on-demand-scroll-bar)
+#+END_SRC
+
+Enable ~on-demand-scroll-bar-mode~ in your init file:
+#+BEGIN_SRC emacs-lisp
+(on-demand-scroll-bar-mode 1)
+#+END_SRC
+
+Or use use-package:
+#+BEGIN_SRC emacs-lisp
+(use-package on-demand-scroll-bar
+ :load-path "path/to/on-demand-scroll-bar"
+ :config
+ (on-demand-scroll-bar-mode 1))
+#+END_SRC
+
+Disable ~scroll-bar-mode~.
+
+
+* Issues
+
+Hidden sections of the buffer (e.g., with org or magit) can result in
+"false positives" (the scroll-bar is shown despite everything whole
+buffer being contained within the window constraints).
+
+
+* Customizing the Scroll-Bar Appearence
+
+If you run a Emacs with GTK, you can customize the appearence of the
+scroll bar.  This requires the custom-css package.
+
+Install custom-css:
+https://github.com/florommel/custom-css
+
+Set ~on-demand-scroll-bar-custom-css-enabled~ to t.
+
+Optionally, customize ~on-demand-scroll-bar-custom-css~ and
+~on-demand-scroll-bar-custom-css-width~.
+
+[[./img/img1.png]]
