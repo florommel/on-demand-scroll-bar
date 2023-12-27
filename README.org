@@ -12,15 +12,22 @@ This is experimental and hacky.  Expect breaking changes.
 
 * Installation
 
-Put the location of ~on-demand-scroll-bar.el~ in your load path and
-require it in your init file:
+Clone the repository and put the path in your load path.
+Then, require ~on-demand-scroll-bar~ in your init file:
 #+BEGIN_SRC emacs-lisp
-(require 'on-demand-scroll-bar)
+(add-to-list 'load-path "/path/to/~on-demand-scroll-bar")
+(require '~on-demand-scroll-bar)
 #+END_SRC
 
-Enable ~on-demand-scroll-bar-mode~ in your init file:
+Enable ~on-demand-scroll-bar-mode~:
 #+BEGIN_SRC emacs-lisp
 (on-demand-scroll-bar-mode 1)
+#+END_SRC
+
+Emacs's built-in ~scroll-bar-mode~ conflicts with
+~on-demand-scroll-bar-mode~ and should be disabled:
+#+BEGIN_SRC emacs-lisp
+(scroll-bar-mode -1)
 #+END_SRC
 
 Or use use-package:
@@ -28,30 +35,18 @@ Or use use-package:
 (use-package on-demand-scroll-bar
  :load-path "path/to/on-demand-scroll-bar"
  :config
- (on-demand-scroll-bar-mode 1))
+ (on-demand-scroll-bar-mode 1)
+ (scroll-bar-mode -1))
 #+END_SRC
 
-Disable ~scroll-bar-mode~.
+
+Optionally, combine it with custom-css to adapt the scroll-bar appearance.
+https://github.com/florommel/custom-css
 
 
 * Issues
 
 Hidden sections of the buffer (e.g., with org or magit) can result in
-"false positives" (the scroll-bar is shown despite everything whole
-buffer being contained within the window constraints).
-
-
-* Customizing the Scroll-Bar Appearence
-
-If you run a Emacs with GTK, you can customize the appearence of the
-scroll bar.  This requires the custom-css package.
-
-Install custom-css:
-https://github.com/florommel/custom-css
-
-Set ~on-demand-scroll-bar-custom-css-enabled~ to t.
-
-Optionally, customize ~on-demand-scroll-bar-custom-css~ and
-~on-demand-scroll-bar-custom-css-width~.
-
-[[./img/img1.png]]
+"false positives" (the scroll-bar is shown despite the visible part of
+the buffer being contained within the window constraints).
+Narrowed buffers, however, are handled correctly.
