@@ -16,7 +16,7 @@ Clone the repository and put the path in your load path.
 Then, require ~on-demand-scroll-bar~ in your init file:
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path "/path/to/~on-demand-scroll-bar")
-(require '~on-demand-scroll-bar)
+(require 'on-demand-scroll-bar)
 #+END_SRC
 
 Enable ~on-demand-scroll-bar-mode~:
