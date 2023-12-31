@@ -1,4 +1,4 @@
-#+TITLE: on-demand-scroll-bar.el - Show scroll bars on demand
+#+TITLE: on-demand-scroll-bar.el - Show scroll bars on demand in Emacs
 #+AUTHOR: Florian Rommel
 #+LANGUAGE: en
 
