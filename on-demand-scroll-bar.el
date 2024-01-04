@@ -51,7 +51,7 @@
 If FORCE is non-nil, set the scroll bars even if they are already present."
   (setq on-demand-scroll-bar--current-timer nil)
   (dolist (frame (frame-list))
-    (dolist (window (window-list frame))
+    (dolist (window (window-list frame t))
       (let* ((buf (window-buffer window))
              (bar-pos
               (when (with-current-buffer buf
@@ -82,7 +82,7 @@ If FORCE is non-nil, set the scroll bars even if they are already present."
     (cancel-timer on-demand-scroll-bar--current-timer)
     (setq on-demand-scroll-bar--current-timer nil))
   (dolist (frame (frame-list))
-    (dolist (window (window-list frame))
+    (dolist (window (window-list frame t))
       (when (nth 2 (window-scroll-bars window))
         (set-window-scroll-bars window nil nil)))))
 
