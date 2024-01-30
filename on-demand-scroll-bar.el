@@ -74,7 +74,7 @@ If FORCE is non-nil, set the scroll bars even if they are already present."
   "Update scroll bars if Emacs is idle."
   (unless on-demand-scroll-bar--current-timer
     (setq on-demand-scroll-bar--current-timer
-          (run-with-idle-timer 0 nil #'on-demand-scroll-bar--update))))
+          (run-with-idle-timer 0.1 nil #'on-demand-scroll-bar--update))))
 
 (defun on-demand-scroll-bar--cleanup ()
   "Clean up scroll bars and timers."
